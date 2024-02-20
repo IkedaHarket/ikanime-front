@@ -1,0 +1,14 @@
+<article class="web-anime-card-info" [class]="props.class || ''">
+    <picture>
+        <img lazy [src]="props.image" alt="">
+    </picture>
+    <div class="web-anime-card-info__content">
+        <h3>{{props.title}}</h3>
+        <p>{{props.description}}</p>
+        <div class="web-anime-card-info__categories">
+            @for (category of props.categories; track $index) {
+                <web-badge-anime-category [text]="category" ></web-badge-anime-category>
+            }
+        </div>
+    </div>
+</article>

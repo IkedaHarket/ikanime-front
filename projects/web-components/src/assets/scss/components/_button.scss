@@ -1,0 +1,57 @@
+@use './../variables/colors' as color;
+@use '../variables/variables' as var;
+@use '../base/fonts';
+
+button.web-button{
+    @mixin btn-color($color) {
+        background-color: map-get(color.$color, $color, 'default');
+        &:hover{
+            background-color: map-get(color.$color, $color, '600');
+        }
+    }
+    @extend .web-f;
+    @extend .fs-16;
+    @extend .fw-bold;
+    align-items: center;
+    background-color: map-get(color.$business-color, 'primary', '700');
+    border-radius: map-get($map: var.$border-radius, $key: '400');
+    border: none;
+    color: map-get($map: color.$text-color, $key: 'white');
+    display: flex;
+    gap: 2rem;
+    height: 5rem;
+    justify-content: center;
+    min-width: 5rem;
+    padding: 1rem;
+    transition: map-get($map: var.$transition, $key: 'default') background-color;
+    width: 23rem;    
+    &:hover{
+        background-color: map-get(color.$color, 'cyan', '800');
+    }
+    &.btn-yellow{
+        @include btn-color('yellow')
+    }
+    &.btn-red{
+        @include btn-color('red')
+    }
+    &.btn-green{
+        @include btn-color('green')
+    }
+    &.btn-purple{
+        @include btn-color('purple')
+    }
+    &.btn-small{
+        @extend .fw-normal;
+        min-width: 13rem;
+        width: auto;
+        height: 3.8rem;
+        gap: 1rem;
+        padding: 1rem 2rem;
+    }
+    &.only-icon{
+        width: auto;
+    }
+    &.shadow{
+        box-shadow: map-get($map: var.$box-shadow, $key: 'default');
+    }
+}

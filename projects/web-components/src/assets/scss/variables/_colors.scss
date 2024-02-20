@@ -1,0 +1,68 @@
+
+$color:(
+    "white":(
+        "default": #FFFFFF,
+    ),
+    "black":(
+        "default": #000000,
+    ),
+    "grey":(
+        "200": #D9D9D9,
+        "default": #444444, 
+        "600": #393939,
+    ),
+    "red":(
+        "default": #DC3545,
+        "600": #cb3241,
+    ),
+    "yellow":(
+        "default": #EEC346, 
+        "600": #ddb641
+    ),
+    "purple":(
+        "default": #7F00B2, 
+        "600": #6e0099,
+    ),
+    "orange":(
+        "default": #ff7e00,
+    ),
+    "green":(
+        "default": #00CA58, 
+        "600": #00b64f,
+    ),
+    "cyan":(
+        "300": #00FFFF,
+        "default": #00E5E5,
+        "700": #00CBCC,
+        "800": #00b9b9
+    ),
+);
+
+$business-color:(
+    "primary":(
+        "300": map-get($color, "cyan", "300" ),
+        "default": map-get($color, "cyan", "default" ),
+        "700": map-get($color, "cyan", "700" ),
+        "800": map-get($color, "cyan", "800" ),
+    ),
+);
+
+$bg-color:(
+    "primary":(
+        "default": map-get($color, "white", "default"),
+    ),
+    "grey":(
+        "default": map-get($color, "grey", "200"),
+        "600": map-get($color, "grey", "600"),
+    ),
+    "business":(
+        "default": map-get($color, "cyan", "default" ),
+        "700": map-get($color, "cyan", "700" ),
+    )
+);
+
+$text-color:(
+    "white": map-get($color, "white", "default"),
+    "grey": map-get($color, "grey", "default"),
+    "black": map-get($color, "black", "default"),
+);

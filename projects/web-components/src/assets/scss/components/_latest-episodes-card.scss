@@ -1,0 +1,32 @@
+@use '../variables/variables' as var;
+@use '../base/fonts'; 
+@use '../base/scrolls' as scroll;
+
+div.web-latest-episodes-card{
+    width: 250px;
+    display: inline-block;
+    div {
+        position: relative;
+        img{
+            border-radius: map-get($map: var.$border-radius, $key: "400");
+            width: 250px;
+            height: 140px;
+            object-fit: cover;
+        }
+        web-badge-anime-type{
+            position: absolute;
+            bottom: 14px;
+            left: 10px;
+        }
+    }
+    h4{
+        @include scroll.simple-scroll;
+        @extend .web-f;
+        @extend .fs-15;
+        @extend .fs-black;
+        max-height: 6rem;
+        overflow-y: auto;
+    }
+}
+
+  

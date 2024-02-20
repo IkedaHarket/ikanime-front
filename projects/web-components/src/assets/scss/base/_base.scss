@@ -1,0 +1,13 @@
+@use "../variables/variables" as var;
+
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Andika New Basic', Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html{
+    font-size: var.$font-size;
+}
+

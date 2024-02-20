@@ -1,0 +1,11 @@
+<button 
+    #button
+    class="web-button" 
+    [class]="class" 
+    [title]="title" 
+    [type]="type"
+    (click)="handlerClick()"
+>
+    <ng-content #icon></ng-content>
+    <ng-content #label></ng-content>
+</button>

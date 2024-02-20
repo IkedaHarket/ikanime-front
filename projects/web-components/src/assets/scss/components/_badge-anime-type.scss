@@ -1,0 +1,27 @@
+@use '../variables/colors' as color;
+@use '../variables/variables' as var;
+@use '../base/fonts';
+
+span.web-badge-anime-type{
+    @extend .web-f;
+    @extend .fw-bold;
+    @extend .fs-14;
+    align-items: center;
+    justify-content: center;
+    min-width: 6rem;
+    height: 2rem;
+    display: inline-flex;
+    padding: 0 10px;
+    color: map-get(color.$text-color , "white" );
+    border-radius: map-get(var.$border-radius, "400" );
+    &.badge-cyan{
+        background-color: map-get(color.$color, "cyan", "default");
+    }
+    &.badge-red{
+        background-color: map-get(color.$color, "red", "default");
+    }
+    &.badge-orange{
+        background-color: map-get(color.$color, "orange", "default");
+    }
+    
+}

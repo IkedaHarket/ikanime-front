@@ -1,0 +1,16 @@
+@use './../variables/colors' as color;
+@use '../variables/variables' as var;
+
+.web-bg-card{
+
+    background-color: map-get(color.$bg-color , "grey", "default" );
+    padding: 1rem;
+    border-radius: map-get(var.$border-radius, "default" );
+
+    &.bg-card-business{
+        background-color: map-get(color.$bg-color , "business", "default" );
+    }
+    &.shadow{
+        box-shadow: map-get($map: var.$box-shadow, $key: 'default');
+    }
+}

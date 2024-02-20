@@ -1,0 +1,17 @@
+@use '../variables/colors' as color;
+@use '../variables/variables' as var;
+@use '../base/fonts';
+
+span.web-badge-category{
+    @extend .web-f;
+    @extend .fs-11;
+    align-items: center;
+    background-color: map-get(color.$bg-color, "grey", "600");
+    border-radius: map-get(var.$border-radius, "default" );
+    color: map-get(color.$text-color , "white" );
+    display: inline-flex;
+    height: 2rem;
+    justify-content: center;
+    min-width: 6rem;
+    padding: 0 10px;
+}

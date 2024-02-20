@@ -1,0 +1,32 @@
+
+<div class="web-bg-card shadow">
+
+    <web-button >
+        <web-icon #icon icon="list"></web-icon>
+        <span #label>Ver Más</span>
+        
+    </web-button>
+    
+    <web-caption icon="https://i.imgur.com/OgYD9l2.png">
+        <h3 #caption>Ultimos Episodios</h3>
+    </web-caption>
+    
+    <web-latest-episodes-card [props]="{
+        image: 'https://www3.animeflv.net/uploads/animes/thumbs/3790.jpg',
+        title: 'Ao no Exorcist: Shimane Illuminati-hen',
+        badgeColor: 'cyan',
+        animeType: 'Anime',
+      }">
+    </web-latest-episodes-card>
+
+    
+</div>
+<br>
+<web-anime-card-info [props]="{
+    image: 'https://www3.animeflv.net/uploads/animes/covers/2450.jpg',
+    title: 'Wagamama High Spec',
+    description: 'La visual novel está protagonizada por Koki Narumi, un estudiante de instituto que además dibuja un manga en una revista semanal. Como el manga que dibuja es una comedia romántica con mucho erotismo, mantiene en secreto que es dibujante de manga, y solo su hermana menor Toa y su mejor amigo Mihiro saben a qué se dedica. Un día, mientras la presidenta del consejo de estudiantes Kaoruko Rokuonji busca nuevos chicos que se unan al consejo, descubre que Koki es el autor del manga. Así Koki tendrá que unirse al consejo a cambio de que la presidenta no revele su consejo. Sin embargo, Ashe R. Sakuragi, la vicepresidenta, se opone a que Koki entre al consejo, y poco a poco se comienzan a acumular las peticiones y problemas de los estudiantes.',
+    categories: ['Comedia', 'Escolares'],
+    class: 'shadow'
+}">
+</web-anime-card-info>

@@ -1,0 +1,40 @@
+@use '../variables/colors' as color;
+
+.web-f{
+    font-family: 'Andika New Basic', Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2rem;
+    color: map-get($map: color.$text-color, $key: 'grey');
+    &.fw-normal{
+        font-weight: normal;
+    }
+    &.fw-bold{
+        font-weight: bold;
+    }
+    &.fs-11{
+        font-size: 1.1rem;
+    }
+    &.fs-12{
+        font-size: 1.2rem;
+    }
+    &.fs-14{
+        font-size: 1.4rem;
+    }
+    &.fs-15{
+        font-size: 1.5rem;
+    }
+    &.fs-16{
+        font-size: 1.6rem;
+    }
+    &.fs-24{
+        font-size: 2.4rem;
+    }
+    &.fs-36{
+        font-size: 3.6rem;
+    }
+    &.fs-black{
+        color: map-get($map: color.$text-color, $key: 'black');
+    }
+    &.fs-white{
+        color: map-get($map: color.$text-color, $key: 'white');
+    }
+}
