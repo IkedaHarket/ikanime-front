@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ButtonComponent, IconComponent, CaptionComponent, LatestEpisodesCardComponent, BadgeAnimeCategoryComponent, AnimeCardInfoComponent, AnimeCardComponent } from '@webComponents';
+import * as WebComponents from '@webComponents';
 
 
 @Component({
@@ -8,13 +8,14 @@ import { ButtonComponent, IconComponent, CaptionComponent, LatestEpisodesCardCom
   standalone: true,
   imports: [ 
       RouterOutlet,
-      ButtonComponent,
-      IconComponent,
-      CaptionComponent,
-      LatestEpisodesCardComponent,
-      BadgeAnimeCategoryComponent,
-      AnimeCardInfoComponent,
-      AnimeCardComponent,
+      WebComponents.ButtonComponent,
+      WebComponents.IconComponent,
+      WebComponents.CaptionComponent,
+      WebComponents.LatestEpisodesCardComponent,
+      WebComponents.BadgeAnimeCategoryComponent,
+      WebComponents.AnimeCardInfoComponent,
+      WebComponents.AnimeCardComponent,
+      WebComponents.NavButtonComponent,
      ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

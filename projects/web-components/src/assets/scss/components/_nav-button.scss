@@ -1,0 +1,18 @@
+@use './../variables/colors' as color;
+@use '../variables/variables' as var;
+@use '../base/fonts';
+
+button.web-nav-button{
+    @extend .web-f;
+    @extend .fs-20;
+    height: 4rem;
+    padding: 0 20px;    
+    border: none;
+    background-color: map-get( color.$bg-color, "business", "default" );
+    border-radius: map-get( var.$border-radius, "default" );
+    transition: map-get( var.$transition, "default" );
+    &.selected,&:hover{
+        background-color: map-get( color.$bg-color, "business", "700" );
+        color: map-get(color.$text-color, "white" );
+    }
+}
