@@ -15,10 +15,17 @@ header.ik-header{
         .ik-header__nav_buttons{
             display: flex;
             gap: 20px;
-            .ik-header__nav_buttons-search{
-                display: flex;
-                
-            }
         }
+    }
+}
+@media screen and (max-width: 1360px) {
+    header.ik-header{
+        padding: 10px 100px;
+    }
+}
+@media screen and (max-width: 1150px) {
+    header.ik-header{
+        //TODO: Formato smartphone
+        background-color: rebeccapurple;
     }
 }

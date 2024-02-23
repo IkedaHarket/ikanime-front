@@ -1,0 +1,26 @@
+@use "../../../../../web-components/src/assets/scss/variables/colors" as color;
+@use "../../../../../web-components/src/assets/scss/variables/variables" as var;
+@use "../../../../../web-components/src/assets/scss/base/fonts";
+
+div.ik-findAnimes-component{
+    background-color: map-get( color.$bg-color, "business", "700" );
+    border-radius: map-get( var.$border-radius, "default" );
+    display: flex;
+    padding: 0 20px;
+    input{
+        @extend .web-f;
+        background: #ffffff00;
+        height: 4rem;
+        width: 20rem;
+        outline: none;
+        border: none;
+        padding: 0 20px 0 0;
+        color: map-get(color.$text-color , "white" );
+        &::placeholder{
+            color: map-get(color.$text-color , "white" );
+        }
+        &::-webkit-search-cancel-button {
+            display: none;
+        }
+    }
+}

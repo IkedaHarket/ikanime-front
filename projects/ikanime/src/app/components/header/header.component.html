@@ -1,6 +1,6 @@
 <header class="ik-header">
     <picture>
-        <img src="../../../assets/images/ikanime-logo.png" alt="">
+        <img src="../../../assets/images/ikanime-logo.png" alt="Ikanime">
     </picture>
     <nav>
         <div class="ik-header__nav_buttons">
@@ -9,17 +9,10 @@
                     <span #text>{{button.text}}</span>
                 </web-nav-button>
             }
-            
-            
-            <!-- <web-nav-button routerLink="/anime/venture" routerLinkActive="active">
-                <span #text>Animes</span>
-            </web-nav-button> -->
-            <div class="ik-header__nav_buttons-search">
-                <input type="search" name="" id="" title="Buscar anime">
-            </div>
+            <app-find-animes></app-find-animes>
         </div>
         <web-nav-button [selected]="true">
-            <span #text>Ingresar</span>
+            <span #text class="web-flex gap-10">Ingresar <img src="../../../assets/svgs/user.svg" alt="User"></span>
         </web-nav-button>
     </nav>
 </header>

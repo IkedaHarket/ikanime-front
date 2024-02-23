@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as Router from '@angular/router';
 import { NavButtonComponent } from '@webComponents';
+import { FindAnimesComponent } from '../';
 
 interface NavbarButton{
   id: number
@@ -17,6 +18,7 @@ interface NavbarButton{
     NavButtonComponent,
     Router.RouterLink,
     Router.RouterLinkActive,
+    FindAnimesComponent,
   ],
   templateUrl: './header.component.html',
 })
