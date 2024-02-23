@@ -10,7 +10,6 @@
     &.bg-card-business{
         background-color: map-get(color.$bg-color , "business", "default" );
     }
-    &.shadow{
-        box-shadow: map-get($map: var.$box-shadow, $key: 'default');
-    }
+
+    box-shadow: map-get($map: var.$box-shadow, $key: 'default');
 }

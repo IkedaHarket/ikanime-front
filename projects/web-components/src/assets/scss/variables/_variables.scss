@@ -7,7 +7,8 @@ $border-radius:(
 );
 
 $box-shadow:(
-    "default": 0 4px 4px 0 rgba(0, 0, 0, 0.25)
+// "default": 0 4px 4px 0 rgba(0, 0, 0, 0.25)
+    "default": 0 0 0 0 rgb(255, 255, 255)
 );
 
 $transition:(

@@ -51,7 +51,6 @@ button.web-button{
     &.only-icon{
         width: auto;
     }
-    &.shadow{
-        box-shadow: map-get($map: var.$box-shadow, $key: 'default');
-    }
+
+    box-shadow: map-get($map: var.$box-shadow, $key: 'default');
 }

@@ -1,11 +1,25 @@
-<!-- <header>
+<header class="ik-header">
     <picture>
-        <img src="" alt="">
+        <img src="../../../assets/images/ikanime-logo.png" alt="">
     </picture>
     <nav>
-        <button>Inicio</button>
-        <button>Animes</button>
-        <input type="search" name="" id="" title="Buscar anime">
-        <button>Ingresar</button>
+        <div class="ik-header__nav_buttons">
+            @for (button of navbarButtons; track $index) {
+                <web-nav-button [routerLink]="button.routerLink" (onClick)="button.onClick()" [selected]="button.selected">
+                    <span #text>{{button.text}}</span>
+                </web-nav-button>
+            }
+            
+            
+            <!-- <web-nav-button routerLink="/anime/venture" routerLinkActive="active">
+                <span #text>Animes</span>
+            </web-nav-button> -->
+            <div class="ik-header__nav_buttons-search">
+                <input type="search" name="" id="" title="Buscar anime">
+            </div>
+        </div>
+        <web-nav-button [selected]="true">
+            <span #text>Ingresar</span>
+        </web-nav-button>
     </nav>
-</header> -->
+</header>

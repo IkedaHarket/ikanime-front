@@ -9,9 +9,9 @@ article.web-anime-card-info{
     width: 42rem;
     display: flex;
     flex-wrap: wrap;
-    &.shadow{
-        box-shadow: map-get($map: var.$box-shadow, $key: 'default');
-    }
+
+    box-shadow: map-get($map: var.$box-shadow, $key: 'default');
+    
     picture{
         flex: 1 1 15rem;
         max-width: 10rem;

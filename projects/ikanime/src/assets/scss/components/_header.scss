@@ -1,0 +1,24 @@
+@use "../../../../../web-components/src/assets/scss/variables/colors" as color;
+@use "../../../../../web-components/src/assets/scss/variables/variables" as var;
+
+header.ik-header{
+    background-color: map-get( color.$bg-color, "business", "default" );
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 200px;
+    align-items: center;
+    
+    box-shadow: map-get($map: var.$box-shadow, $key: 'default');
+    nav {
+        display: flex;
+        gap: 30px;
+        .ik-header__nav_buttons{
+            display: flex;
+            gap: 20px;
+            .ik-header__nav_buttons-search{
+                display: flex;
+                
+            }
+        }
+    }
+}
