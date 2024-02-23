@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "dev:ikanime": "npx ng s",
+    "dev:webComponents": "npx ng build webComponents --watch",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",

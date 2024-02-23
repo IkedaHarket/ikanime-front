@@ -1,20 +1,13 @@
-@mixin simple-scroll{
-        --sb-track-color: #d2d2d2;
-        --sb-thumb-color: #4f4f4f;
-        --sb-size: 1px;
-        &::-webkit-scrollbar {
-            width: var(--sb-size);
-        }
-        &::-webkit-scrollbar-track {
-            background: var(--sb-track-color);
-            border-radius: 3px;
-        }
-        &::-webkit-scrollbar-track {
-            background: var(--sb-track-color);
-            border-radius: 3px;
-        }
-        &::-webkit-scrollbar-thumb {
-            background: var(--sb-thumb-color);
-            border-radius: 3px;
-        }
+@mixin simple-scroll($track-color:#d2d2d2, $thumb-color:#4f4f4f, $size: 1px){  
+    &::-webkit-scrollbar {
+        width: $size;
+    }
+    &::-webkit-scrollbar-track {
+        background: $track-color;
+        border-radius: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $thumb-color;
+        border-radius: 3px;
+    }
 }

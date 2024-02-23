@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ButtonComponent, IconComponent, CaptionComponent, LatestEpisodesCardComponent, BadgeAnimeCategoryComponent, AnimeCardInfoComponent } from '@webComponents';
+import { ButtonComponent, IconComponent, CaptionComponent, LatestEpisodesCardComponent, BadgeAnimeCategoryComponent, AnimeCardInfoComponent, AnimeCardComponent } from '@webComponents';
 
 
 @Component({
@@ -14,6 +14,7 @@ import { ButtonComponent, IconComponent, CaptionComponent, LatestEpisodesCardCom
       LatestEpisodesCardComponent,
       BadgeAnimeCategoryComponent,
       AnimeCardInfoComponent,
+      AnimeCardComponent,
      ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

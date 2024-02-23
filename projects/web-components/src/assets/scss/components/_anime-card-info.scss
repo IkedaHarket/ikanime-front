@@ -4,7 +4,6 @@
 @use '../base/scrolls' as scroll;
 
 article.web-anime-card-info{
-    margin: 20px;
     background-color: map-get(color.$bg-color , "business", "700" );
     border-radius: map-get(var.$border-radius, "400" );
     width: 42rem;

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Color } from '../badge-anime-type/badge-anime-type.component';
+import { BadgeAnimeTypeComponent, Color } from '../badge-anime-type/badge-anime-type.component';
 
 interface Inputs{
   size: 'normal' | 'small',
@@ -16,7 +16,7 @@ interface Inputs{
 @Component({
   selector: 'web-anime-card',
   standalone: true,
-  imports: [],
+  imports: [ BadgeAnimeTypeComponent ],
   templateUrl: './anime-card.component.html',
 })
 export class AnimeCardComponent {

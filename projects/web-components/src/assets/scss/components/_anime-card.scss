@@ -1,0 +1,51 @@
+@use '../variables/colors' as color;
+@use '../variables/variables' as var;
+@use '../base/fonts';
+@use '../base/scrolls' as scroll;
+
+div.web-anime-card{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    &.web-anime-card-normal{
+        width: 200px;
+        div.web-anime-card-info{
+            p{
+                @extend .fs-16;
+                max-height: 7.5rem;
+            }
+        }
+    }
+    &.web-anime-card-small{
+        width: 150px;
+        div.web-anime-card-info{
+            p{
+                @extend .fs-12;
+                max-height: 4rem;
+            }
+        }
+    }
+    picture{
+        position: relative;
+        width: 100%;
+        img{
+            width: 100%;
+            border-radius: map-get(var.$border-radius, "400" );
+            object-fit: contain;
+        }
+        web-badge-anime-type{
+            position: absolute;
+            bottom: 14px;
+            left: 10px;
+        }
+    }
+    div.web-anime-card-info{
+        p{
+            @include scroll.simple-scroll($track-color:#d2d2d200, $thumb-color:#4f4f4f00);
+            @extend .web-f;
+            @extend .fs-black;
+            text-align: center;
+            overflow-y: auto;
+        }
+    }
+}
