@@ -1,4 +1,10 @@
 <div class="ik-findAnimes-component">
-    <input type="search" title="Buscar anime" placeholder="Buscar..." [(ngModel)]="animeToFind">
+    <input 
+        type="search" 
+        title="Buscar anime" 
+        placeholder="Buscar..." 
+        [(ngModel)]="animeToFind" 
+        (ngModelChange)="onAnimeToFindChange($event)"
+    >
     <img src="../../../assets/svgs/search.svg" alt="Search">
 </div>
