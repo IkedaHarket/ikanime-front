@@ -1,7 +1,12 @@
 <div class="web-latest-episodes-card">
     <div>
         <img lazy [src]="props.image" alt="">
-        <web-badge-anime-type [text]="props.animeType" [color]="props.badgeColor"></web-badge-anime-type>
+        <web-badge-anime-type 
+            [props] = "{
+                text: props.animeType,
+                color: props.badgeColor
+            }"
+        ></web-badge-anime-type>
     </div>
     <h4>{{props.title}}</h4>
 </div>

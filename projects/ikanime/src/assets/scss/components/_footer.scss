@@ -1,0 +1,25 @@
+@use "../../../../../web-components/src/assets/scss/variables/colors" as color;
+@use "../../../../../web-components/src/assets/scss/variables/variables" as var;
+
+footer.ik-footer{
+    align-items: center;
+    background-color: map-get( color.$bg-color, "business", "default" );
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+    padding: 10px 200px;
+    padding: 10px 200px;
+    width: 100%;
+    picture{
+        height: 60px;
+    }
+    picture:last-child{
+        height: 70px;
+    }
+}
+
+@media screen and (max-width: map-get(var.$screen-size, "lg")) {
+    footer.ik-footer{
+        padding: 10px 100px;
+    }
+}

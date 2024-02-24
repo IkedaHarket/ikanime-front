@@ -18,7 +18,7 @@ header.ik-header{
         }
     }
 }
-@media screen and (max-width: 1360px) {
+@media screen and (max-width: map-get(var.$screen-size, "lg")) {
     header.ik-header{
         padding: 10px 100px;
     }

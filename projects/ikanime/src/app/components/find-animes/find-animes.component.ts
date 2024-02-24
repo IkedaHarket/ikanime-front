@@ -1,10 +1,11 @@
 import { Component, ElementRef, OnInit, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import * as Rxjs from 'rxjs';
+
+import { BadgeAnimeTypeComponent } from '@webComponents';
 import { AnimeService } from '../../services';
 import { Anime } from '../../models/anime';
-import { CommonModule } from '@angular/common';
-import { BadgeAnimeTypeComponent } from '@webComponents';
 import { ClickOutsideDirective } from '../../directives';
 
 @Component({
