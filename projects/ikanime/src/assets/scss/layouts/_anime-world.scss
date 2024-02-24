@@ -1,0 +1,12 @@
+@use "../../../../../web-components/src/assets/scss/variables/colors" as color;
+@use "../../../../../web-components/src/assets/scss/variables/variables" as var;
+
+main.ik-layout-anime-world{
+    padding: map-get(var.$screen-size, "xxl", "padding");
+}
+
+@media screen and (max-width: map-get(var.$screen-size, "lg", "max-width")) {
+    main.ik-layout-anime-world{
+        padding: map-get(var.$screen-size, "lg", "padding");
+    }
+}

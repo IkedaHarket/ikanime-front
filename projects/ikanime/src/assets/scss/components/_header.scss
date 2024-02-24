@@ -5,7 +5,7 @@ header.ik-header{
     background-color: map-get( color.$bg-color, "business", "default" );
     display: flex;
     justify-content: space-between;
-    padding: 10px 200px;
+    padding: map-get(var.$screen-size, "xxl", "padding");
     align-items: center;
     
     box-shadow: map-get($map: var.$box-shadow, $key: 'default');
@@ -18,9 +18,9 @@ header.ik-header{
         }
     }
 }
-@media screen and (max-width: map-get(var.$screen-size, "lg")) {
+@media screen and (max-width: map-get(var.$screen-size, "lg", "max-width")) {
     header.ik-header{
-        padding: 10px 100px;
+        padding: map-get(var.$screen-size, "lg", "padding")
     }
 }
 @media screen and (max-width: 1150px) {

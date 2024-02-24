@@ -16,5 +16,11 @@ $transition:(
 );
 
 $screen-size:(
-    "lg": 1360px,  
+    "xxl": (
+        "padding": 10px 200px,
+    ),
+    "lg": (
+        "padding": 10px 100px,
+        "max-width": 1360px,
+    ),  
 )

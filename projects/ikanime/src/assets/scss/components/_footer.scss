@@ -7,8 +7,7 @@ footer.ik-footer{
     display: flex;
     height: 100px;
     justify-content: space-between;
-    padding: 10px 200px;
-    padding: 10px 200px;
+    padding: map-get(var.$screen-size, "xxl", "padding");
     width: 100%;
     picture{
         height: 60px;
@@ -18,8 +17,8 @@ footer.ik-footer{
     }
 }
 
-@media screen and (max-width: map-get(var.$screen-size, "lg")) {
+@media screen and (max-width: map-get(var.$screen-size, "lg", "max-width")) {
     footer.ik-footer{
-        padding: 10px 100px;
+        padding: map-get(var.$screen-size, "lg", "padding")
     }
 }
