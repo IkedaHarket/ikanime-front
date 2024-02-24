@@ -1,5 +1,6 @@
+import { AnimeType } from "./anime-type.entity"
+
 interface State{ id: string, value:string }
-interface Type{ id: string, value:string }
 interface OtherNames{ id: string, value:string }
 interface Category{ id: string, value:string }
 
@@ -10,7 +11,7 @@ interface AnimeProps{
     uniqueName: string,
     otherNames: OtherNames[],
     state: State,
-    type: Type,
+    type: AnimeType,
     image: string,
     position: number,
     categories: Category[],
@@ -34,7 +35,7 @@ export class Anime{
     public position : number
     public releaseDate : Date | null
     public state : State
-    public type : Type
+    public type : AnimeType
     public uniqueName : string
     public updatedAt : Date
     

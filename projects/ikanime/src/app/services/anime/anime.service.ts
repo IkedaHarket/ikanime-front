@@ -5,6 +5,9 @@ import * as API_INTERFACES from '../../interfaces/api';
 import * as API_MODELS from '../../models/api';
 import * as Rxjs from 'rxjs';
 import { convertToAnime } from './adapter';
+import { Pagination } from '../../models/paginator.entity';
+import { Anime } from '../../models/anime';
+import { convertToPagination } from '../adapters';
 
 interface FindOptions{
   queries?: {
@@ -22,7 +25,7 @@ export class AnimeService {
   private _http = inject(HttpClient)
   private _baseUrl = environment.API_URL
 
-  find(options: FindOptions = {}){
+  find(options: FindOptions = {}): Rxjs.Observable<Pagination<Anime[]> | null>{
     let url = `${this._baseUrl}/anime/find`;
     if(options.queries){
       url += `?${ new API_MODELS.PaginationRequest(options.queries.page, options.queries.limit).createUrlParams() }`
@@ -31,7 +34,12 @@ export class AnimeService {
     return this._http.post<API_INTERFACES.ServerResponse<API_INTERFACES.PaginationResponse<API_INTERFACES.AnimeResponse[]>>>(
       url, { ...options?.body }
       ).pipe(
-          Rxjs.map( ({response}) => convertToAnime(response.records) ),
+          Rxjs.map( ({ response }) => {
+            return convertToPagination<Anime[]>({
+              ...response,
+              records: convertToAnime(response.records)
+            })
+          } ),
           Rxjs.catchError( (e)=>  this._handleError(e) ),
         );
   }

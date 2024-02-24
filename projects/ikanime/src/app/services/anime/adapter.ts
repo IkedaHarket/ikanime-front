@@ -1,16 +1,17 @@
 import { AnimeResponse } from "../../interfaces/api";
+import { AnimeType } from "../../models/anime/anime-type.entity";
 import { Anime } from "../../models/anime/anime.entity";
 
 
 export function convertToAnime(animeResponse: AnimeResponse[]): Anime[]{
-    return animeResponse.map( (anime) => ({
+    return animeResponse.map( (anime) => new Anime ({
         id: anime.id,
         name: anime.name,
         description: anime.description,
         uniqueName: anime.uniqueName,
         otherNames: anime.otherNames,
         state: anime.state,
-        type: anime.type,
+        type: new AnimeType({ id: anime.type.id, value: anime.type.value }),
         image: anime.image,
         position: anime.position,
         categories: anime.categories,
@@ -19,5 +20,5 @@ export function convertToAnime(animeResponse: AnimeResponse[]): Anime[]{
         isActive: anime.isActive,
         updatedAt: anime.updatedAt,
         createdAt: anime.createdAt,
-    }) as Anime) 
+    })) 
   }

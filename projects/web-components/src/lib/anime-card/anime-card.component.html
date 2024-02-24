@@ -3,7 +3,12 @@
     >
     <picture>
         <img lazy [src]="props.anime.image" [alt]="props.anime.title" [title]="props.anime.title">
-        <web-badge-anime-type [text]="props.anime.badge.text" [color]="props.anime.badge.color" ></web-badge-anime-type>
+        <web-badge-anime-type 
+            [props]="{
+                text: props.anime.badge.text,
+                color: props.anime.badge.color,
+            }"
+        ></web-badge-anime-type>
     </picture>
     <div class="web-anime-card-info">
         <p> {{ props.anime.title }} </p>

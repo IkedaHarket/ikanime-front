@@ -1,10 +1,36 @@
 <div class="ik-findAnimes-component">
-    <input 
+    <div class="ik-findAnimes-component-input">
+        <input 
         type="search" 
         title="Buscar anime" 
         placeholder="Buscar..." 
         [(ngModel)]="animeToFind" 
         (ngModelChange)="onAnimeToFindChange($event)"
-    >
-    <img src="../../../assets/svgs/search.svg" alt="Search">
+        >
+        <img src="../../../assets/svgs/search.svg" alt="Search">
+    </div>
+    <section class="ik-findAnimes-component-response">
+        @for (anime of animes; track $index) {
+            <div class="ik-findAnimes-component-response-anime">
+                <picture>
+                    <img [src]="anime.image" [alt]="anime.name">
+                </picture>
+                <div>
+                    <h3>{{anime.name}}</h3>
+                    <web-badge-anime-type 
+                        [props]="{
+                            text: anime.type.value,
+                            color: anime.type.color,
+                            size: 'small'
+                        }"
+                    ></web-badge-anime-type>
+                </div>
+            </div>
+        }
+        @if (animesNotFound) {
+            <div class="ik-findAnimes-component-response-anime-404">
+                <span >No se han encontrado animes :c</span>
+            </div>
+        }
+    </section>
 </div>

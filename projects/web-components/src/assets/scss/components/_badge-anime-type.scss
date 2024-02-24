@@ -15,13 +15,19 @@ span.web-badge-anime-type{
     color: map-get(color.$text-color , "white" );
     border-radius: map-get(var.$border-radius, "400" );
     &.badge-cyan{
-        background-color: map-get(color.$color, "cyan", "default");
+        background-color: map-get(color.$color, "cyan", "700");
     }
     &.badge-red{
         background-color: map-get(color.$color, "red", "default");
     }
     &.badge-orange{
         background-color: map-get(color.$color, "orange", "default");
+    }
+    &.badge-purple{
+        background-color: map-get(color.$color, "purple", "default");
+    }
+    &.badge-size-small{
+        @extend .fs-11;
     }
     
 }
