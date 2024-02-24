@@ -4,6 +4,7 @@ export class PaginationRequest{
         public page?: number,
         public limit?: number,
         ){}
+        
     createUrlParams( ): URLSearchParams{
 
         const urlParams = new URLSearchParams();
