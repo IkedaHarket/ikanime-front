@@ -1,15 +1,16 @@
-import { Component, ElementRef, HostListener, OnInit, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import * as Rxjs from 'rxjs';
 import { AnimeService } from '../../services';
 import { Anime } from '../../models/anime';
 import { CommonModule } from '@angular/common';
 import { BadgeAnimeTypeComponent } from '@webComponents';
+import { ClickOutsideDirective } from '../../directives';
 
 @Component({
   selector: 'app-find-animes',
   standalone: true,
-  imports: [ CommonModule, FormsModule, BadgeAnimeTypeComponent ],
+  imports: [ CommonModule, FormsModule, BadgeAnimeTypeComponent, ClickOutsideDirective ],
   templateUrl: './find-animes.component.html',
 })
 export class FindAnimesComponent implements OnInit {
@@ -33,15 +34,6 @@ export class FindAnimesComponent implements OnInit {
     this._destroy$.complete();
   }
 
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent) {
-    if (!this.el?.nativeElement.contains(event.target)) {
-      this.animeToFind= ''
-      this.animes = []
-      this.animesNotFound = false 
-    }
-  }
-
   setAnimeToFindSubscription(): void {
     this._animeToFindChanged
       .pipe(
@@ -52,6 +44,12 @@ export class FindAnimesComponent implements OnInit {
       .subscribe((newValue) => {
         this.updateAnimeToFind(newValue);
       });
+  }
+
+  handleClickOutside() {
+    this.animeToFind = '';
+    this.animes = [];
+    this.animesNotFound = false;
   }
 
   onAnimeToFindChange(newValue: string): void {
