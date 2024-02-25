@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CaptionComponent } from '@webComponents';
+import * as WebComponents from '@webComponents';
 
 @Component({
   selector: 'app-venture',
   standalone: true,
-  imports: [ CaptionComponent ],
+  imports: [ WebComponents.CaptionComponent, WebComponents.MultiselectComponent ],
   templateUrl: './venture.component.html'
 })
 export class VentureComponent {

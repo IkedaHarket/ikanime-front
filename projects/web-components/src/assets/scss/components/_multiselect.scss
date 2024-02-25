@@ -1,0 +1,19 @@
+@use './../variables/colors' as color;
+@use '../variables/variables' as var;
+@use '../base/fonts';
+
+div.web-multiselect{
+    position: relative;
+    .web-multiselect-input{
+        @extend .web-f;
+        @extend .fs-14;
+        height: 3rem;
+        max-width: 17.5rem;
+        background-color: map-get(color.$color , "white", "default" );
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px;
+        border-radius: map-get(var.$border-radius, "400" );
+    }
+}
