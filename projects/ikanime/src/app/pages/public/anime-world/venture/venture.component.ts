@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { CaptionComponent } from '@webComponents';
 
 @Component({
   selector: 'app-venture',
   standalone: true,
-  imports: [],
-  templateUrl: './venture.component.html',
-  styleUrl: './venture.component.scss'
+  imports: [ CaptionComponent ],
+  templateUrl: './venture.component.html'
 })
 export class VentureComponent {
 

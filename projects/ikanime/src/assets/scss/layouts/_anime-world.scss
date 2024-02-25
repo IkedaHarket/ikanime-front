@@ -3,6 +3,7 @@
 
 main.ik-layout-anime-world{
     padding: map-get(var.$screen-size, "xxl", "padding");
+    margin: 40px 0;
 }
 
 @media screen and (max-width: map-get(var.$screen-size, "lg", "max-width")) {
