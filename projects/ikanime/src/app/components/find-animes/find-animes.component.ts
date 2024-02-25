@@ -3,15 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import * as Rxjs from 'rxjs';
 
-import { BadgeAnimeTypeComponent } from '@webComponents';
+import * as webComponents from '@webComponents';
 import { AnimeService } from '../../services';
 import { Anime } from '../../models/anime';
-import { ClickOutsideDirective } from '../../directives';
 
 @Component({
   selector: 'app-find-animes',
   standalone: true,
-  imports: [ CommonModule, FormsModule, BadgeAnimeTypeComponent, ClickOutsideDirective ],
+  imports: [ CommonModule, FormsModule, webComponents.BadgeAnimeTypeComponent, webComponents.ClickOutsideDirective ],
   templateUrl: './find-animes.component.html',
 })
 export class FindAnimesComponent implements OnInit {
