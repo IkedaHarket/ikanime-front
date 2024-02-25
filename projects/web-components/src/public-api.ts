@@ -2,13 +2,13 @@
  * Public API Surface of web-components
  */
 
-export * from './lib/button/button.component'
-export * from './lib/icon/icon.component'
-export * from './lib/caption/caption.component'
-export * from './lib/latest-episodes-card/latest-episodes-card.component'
-export * from './lib/badge-anime-type/badge-anime-type.component'
-export * from './lib/badge-anime-category/badge-anime-category.component'
-export * from './lib/anime-card-info/anime-card-info.component'
-export * from './lib/anime-card/anime-card.component'
-export * from './lib/nav-button/nav-button.component'
-export * from './lib/multiselect/multiselect.component'
+export * from './lib/components/button/button.component'
+export * from './lib/components/icon/icon.component'
+export * from './lib/components/caption/caption.component'
+export * from './lib/components/latest-episodes-card/latest-episodes-card.component'
+export * from './lib/components/badge-anime-type/badge-anime-type.component'
+export * from './lib/components/badge-anime-category/badge-anime-category.component'
+export * from './lib/components/anime-card-info/anime-card-info.component'
+export * from './lib/components/anime-card/anime-card.component'
+export * from './lib/components/nav-button/nav-button.component'
+export * from './lib/components/multiselect/multiselect.component'
