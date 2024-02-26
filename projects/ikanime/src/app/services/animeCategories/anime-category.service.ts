@@ -28,6 +28,8 @@ export class AnimeCategoryService {
     let url = `${this._baseUrl}/anime/category/find`;
     if(options.queries){
       url += `?${ new API_MODELS.PaginationRequest(options.queries.page, options.queries.limit).createUrlParams() }`
+    }else{
+      url += `?${ new API_MODELS.PaginationRequest(1, 100).createUrlParams() }`
     }
     
     return this._http.post<API_INTERFACES.ServerResponse<API_INTERFACES.PaginationResponse<API_INTERFACES.CategoryFindResponse[]>>>(
