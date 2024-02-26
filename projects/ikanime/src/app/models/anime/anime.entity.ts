@@ -1,4 +1,4 @@
-import { AnimeType } from "./anime-type.entity"
+import { AnimeType } from "./"
 
 interface State{ id: string, value:string }
 interface OtherNames{ id: string, value:string }

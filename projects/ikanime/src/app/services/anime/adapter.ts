@@ -1,4 +1,5 @@
 import { AnimeFindResponse } from "../../interfaces/api";
+import { AnimeCategory } from "../../models/anime";
 import { AnimeType } from "../../models/anime/anime-type.entity";
 import { Anime } from "../../models/anime/anime.entity";
 
