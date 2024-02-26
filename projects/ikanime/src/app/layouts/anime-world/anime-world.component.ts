@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
+import { AnimeCategoryService } from '../../services';
 
 @Component({
   selector: 'app-anime-world',
@@ -14,6 +15,12 @@ import { FooterComponent } from '../../components/footer/footer.component';
   templateUrl: './anime-world.component.html',
   styleUrl: './anime-world.component.scss'
 })
-export class AnimeWorldComponent {
+export class AnimeWorldComponent implements OnInit {
+
+  private _categoryService = inject(AnimeCategoryService)
+
+  ngOnInit(): void {
+    this._categoryService.find().subscribe(console.log)
+  }
 
 }

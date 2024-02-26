@@ -1,9 +1,9 @@
-import { AnimeResponse } from "../../interfaces/api";
+import { AnimeFindResponse } from "../../interfaces/api";
 import { AnimeType } from "../../models/anime/anime-type.entity";
 import { Anime } from "../../models/anime/anime.entity";
 
 
-export function convertToAnime(animeResponse: AnimeResponse[]): Anime[]{
+export function convertToAnime(animeResponse: AnimeFindResponse[]): Anime[]{
     return animeResponse.map( (anime) => new Anime ({
         id: anime.id,
         name: anime.name,

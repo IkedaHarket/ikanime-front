@@ -7,7 +7,7 @@ interface Option{
 
 interface Inputs {
   label: string,
-  options: Option[]
+  // options: Option[]
 }
 
 @Component({

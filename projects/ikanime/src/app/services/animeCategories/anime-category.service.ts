@@ -1,12 +1,12 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from 'projects/ikanime/src/environments/environment';
+import * as Rxjs from 'rxjs'
 import * as API_INTERFACES from '../../interfaces/api';
 import * as API_MODELS from '../../models/api';
-import * as Rxjs from 'rxjs';
-import { convertToAnime } from './adapter';
-import { Pagination } from '../../models/paginator.entity';
-import { Anime } from '../../models/anime';
+import { Pagination } from '../../models';
+import { AnimeCategory } from '../../models/anime';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { convertToCategory } from './adapter';
 import { convertToPagination } from '../adapters';
 
 interface FindOptions{
@@ -14,30 +14,29 @@ interface FindOptions{
     page: number,
     limit: number
   },
-  body ?: API_INTERFACES.AnimeFindFilterRequest
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class AnimeService {
+export class AnimeCategoryService {
 
   private _http = inject(HttpClient)
   private _baseUrl = environment.API_URL
 
-  find(options: FindOptions = {}): Rxjs.Observable<Pagination<Anime[]> | null>{
-    let url = `${this._baseUrl}/anime/find`;
+  find(options: FindOptions = {}): Rxjs.Observable<Pagination<AnimeCategory[]> | null>{
+    let url = `${this._baseUrl}/anime/category/find`;
     if(options.queries){
       url += `?${ new API_MODELS.PaginationRequest(options.queries.page, options.queries.limit).createUrlParams() }`
     }
     
-    return this._http.post<API_INTERFACES.ServerResponse<API_INTERFACES.PaginationResponse<API_INTERFACES.AnimeFindResponse[]>>>(
-      url, { ...options?.body }
+    return this._http.post<API_INTERFACES.ServerResponse<API_INTERFACES.PaginationResponse<API_INTERFACES.CategoryFindResponse[]>>>(
+      url, { }
       ).pipe(
           Rxjs.map( ({ response }) => {
-            return convertToPagination<Anime[]>({
+            return convertToPagination<AnimeCategory[]>({
               ...response,
-              records: convertToAnime(response.records)
+              records: convertToCategory(response.records)
             })
           } ),
           Rxjs.catchError( (e)=>  this._handleError(e) ),
@@ -47,4 +46,5 @@ export class AnimeService {
   private _handleError(error: HttpErrorResponse) {
     return Rxjs.of(null)
   }
+
 }

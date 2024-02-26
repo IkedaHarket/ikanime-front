@@ -3,7 +3,7 @@ interface Type{ id: string, value:string }
 interface OtherNames{ id: string, value:string }
 interface Category{ id: string, value:string }
 
-export interface AnimeResponse{
+export interface AnimeFindResponse{
     id:string
     name: string,
     description: string,
