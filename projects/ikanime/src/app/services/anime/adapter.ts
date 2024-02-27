@@ -1,6 +1,4 @@
 import { AnimeFindResponse } from "../../interfaces/api";
-import { AnimeCategory } from "../../models/anime";
-import { AnimeType } from "../../models/anime/anime-type.entity";
 import { Anime } from "../../models/anime/anime.entity";
 
 
@@ -12,7 +10,7 @@ export function convertToAnime(animeResponse: AnimeFindResponse[]): Anime[]{
         uniqueName: anime.uniqueName,
         otherNames: anime.otherNames,
         state: anime.state,
-        type: new AnimeType({ id: anime.type.id, value: anime.type.value }),
+        type: anime.type,
         image: anime.image,
         position: anime.position,
         categories: anime.categories,

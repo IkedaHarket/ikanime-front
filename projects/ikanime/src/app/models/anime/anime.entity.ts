@@ -1,8 +1,8 @@
-import { AnimeType } from "./"
 
 interface State{ id: string, value:string }
 interface OtherNames{ id: string, value:string }
 interface Category{ id: string, value:string }
+interface Type{ id: string, value:string }
 
 interface AnimeProps{
     id:string
@@ -11,7 +11,7 @@ interface AnimeProps{
     uniqueName: string,
     otherNames: OtherNames[],
     state: State,
-    type: AnimeType,
+    type: Type,
     image: string,
     position: number,
     categories: Category[],
@@ -35,7 +35,7 @@ export class Anime{
     public position : number
     public releaseDate : Date | null
     public state : State
-    public type : AnimeType
+    public type : Type
     public uniqueName : string
     public updatedAt : Date
     
