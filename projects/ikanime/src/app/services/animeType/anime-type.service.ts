@@ -8,6 +8,7 @@ import { Pagination } from '../../models';
 import { convertToPagination } from '../adapters';
 import { AnimeType } from '../../models/anime';
 import { convertToAnimeType } from './adapter';
+import { DataWithStatus } from '../../interfaces';
 
 interface FindOptions{
   queries?: {
@@ -23,17 +24,19 @@ export class AnimeTypeService {
 
   private _http = inject(HttpClient)
   private _baseUrl = environment.API_URL
-  private _types = signal<Pagination<AnimeType[]> | null>(null)
+  private _types = signal<DataWithStatus<Pagination<AnimeType[]>>>({
+    hasError: false, isLoad: false, isLoading: true
+  })
 
-  public get types(): Signal<Pagination<AnimeType[]> | null>{
+  public get types(): Signal<DataWithStatus<Pagination<AnimeType[]>>>{
     return this._types.asReadonly()
   }
 
-  public setTypes(value: Pagination<AnimeType[]>): void{
+  public setTypes(value: DataWithStatus<Pagination<AnimeType[]>>): void{
     this._types.set(value)
   }
 
-  public updateTypes(updateFn: (value: Pagination<AnimeType[]> | null) => Pagination<AnimeType[]> | null): void{
+  public updateTypes(updateFn: (value: DataWithStatus<Pagination<AnimeType[]>>) => DataWithStatus<Pagination<AnimeType[]>>): void{
     this._types.update(updateFn)
   }
   
@@ -54,6 +57,27 @@ export class AnimeTypeService {
           } ),
           Rxjs.catchError( (e)=>  this._handleError(e) ),
         );
+  }
+
+  findAndSetTypes(options: FindOptions = {}){
+    return this.find(options).pipe(
+        Rxjs.tap((response)=>{
+          if(response){
+            this.setTypes({
+              hasError: false,
+              isLoad: true,
+              isLoading: false,
+              item: response
+            })
+          }else{
+            this.setTypes({
+              hasError: true,
+              isLoad: false,
+              isLoading: false,
+            })
+          }
+        }),
+      )
   }
 
   private _handleError(error: HttpErrorResponse) {
