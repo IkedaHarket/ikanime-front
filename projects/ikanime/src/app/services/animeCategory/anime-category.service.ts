@@ -8,6 +8,7 @@ import { AnimeCategory } from '../../models/anime';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { convertToCategory } from './adapter';
 import { convertToPagination } from '../adapters';
+import { DataWithStatus } from '../../interfaces';
 
 interface FindOptions{
   queries?: {
@@ -23,17 +24,19 @@ export class AnimeCategoryService {
 
   private _http = inject(HttpClient)
   private _baseUrl = environment.API_URL
-  private _categories = signal<Pagination<AnimeCategory[]> | null>(null)
+  private _categories = signal<DataWithStatus<Pagination<AnimeCategory[]>>>({
+    hasError: false, isLoad: false, isLoading: true
+  })
 
-  public get categories(): Signal<Pagination<AnimeCategory[]> | null>{
+  public get categories(): Signal<DataWithStatus<Pagination<AnimeCategory[]>>>{
     return this._categories.asReadonly()
   }
 
-  public setCategories(value: Pagination<AnimeCategory[]>): void{
+  public setCategories(value: DataWithStatus<Pagination<AnimeCategory[]>>): void{
     this._categories.set(value)
   }
 
-  public updateCategories(updateFn: (value: Pagination<AnimeCategory[]> | null) => Pagination<AnimeCategory[]> | null): void{
+  public updateCategories(updateFn: (value: DataWithStatus<Pagination<AnimeCategory[]>>) => DataWithStatus<Pagination<AnimeCategory[]>>): void{
     this._categories.update(updateFn)
   }
   
@@ -56,6 +59,27 @@ export class AnimeCategoryService {
           } ),
           Rxjs.catchError( (e)=>  this._handleError(e) ),
         );
+  }
+
+  findAndSetCategories(options: FindOptions = {}){
+    return this.find(options).pipe(
+        Rxjs.tap((response)=>{
+          if(response){
+            this.setCategories({
+              hasError: false,
+              isLoad: true,
+              isLoading: false,
+              item: response
+            })
+          }else{
+            this.setCategories({
+              hasError: true,
+              isLoad: false,
+              isLoading: false,
+            })
+          }
+        }),
+      )
   }
 
   private _handleError(error: HttpErrorResponse) {

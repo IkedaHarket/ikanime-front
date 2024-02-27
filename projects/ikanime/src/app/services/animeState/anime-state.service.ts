@@ -8,6 +8,7 @@ import { Pagination } from '../../models';
 import { AnimeState } from '../../models/anime';
 import { convertToPagination } from '../adapters';
 import { convertToState } from './adapter';
+import { DataWithStatus } from '../../interfaces';
 
 interface FindOptions{
   queries?: {
@@ -22,20 +23,22 @@ export class AnimeStateService {
 
   private _http = inject(HttpClient)
   private _baseUrl = environment.API_URL
-  private _states = signal<Pagination<AnimeState[]> | null>(null)
+  private _states = signal<DataWithStatus<Pagination<AnimeState[]>>>({
+    hasError: false, isLoad: false, isLoading: true
+  })
 
-  public get states(): Signal<Pagination<AnimeState[]> | null>{
+  public get states(): Signal<DataWithStatus<Pagination<AnimeState[]>>>{
     return this._states.asReadonly()
   }
 
-  public setStates(value: Pagination<AnimeState[]>): void{
+  public setStates(value: DataWithStatus<Pagination<AnimeState[]>>): void{
     this._states.set(value)
   }
 
-  public updateStates(updateFn: (value: Pagination<AnimeState[]> | null) => Pagination<AnimeState[]> | null): void{
+  public updateStates(updateFn: (value: DataWithStatus<Pagination<AnimeState[]>>) => DataWithStatus<Pagination<AnimeState[]>>): void{
     this._states.update(updateFn)
   }
-  
+
   find(options: FindOptions = {}): Rxjs.Observable<Pagination<AnimeState[]> | null>{
     let url = `${this._baseUrl}/anime/state/find`;
     if(options.queries){
@@ -55,6 +58,7 @@ export class AnimeStateService {
         );
   }
 
+  
   private _handleError(error: HttpErrorResponse) {
     return Rxjs.of(null)
   }
