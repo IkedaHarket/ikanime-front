@@ -21,7 +21,7 @@ import { CommonModule } from '@angular/common';
 export class AnimeWorldComponent implements OnInit {
 
   private _categoryService = inject(AnimeCategoryService)
-  public _stateService = inject(AnimeStateService)
+  private _stateService = inject(AnimeStateService)
   private _typeService = inject(AnimeTypeService)
 
   ngOnInit(): void {
@@ -33,7 +33,10 @@ export class AnimeWorldComponent implements OnInit {
       if(!states) return
       this._stateService.setStates(states)
     })
-    this._typeService.find().subscribe(console.log)
+    this._typeService.find().subscribe((types)=> {
+      if(!types) return
+      this._typeService.setTypes(types)
+    })
   }
 
 }

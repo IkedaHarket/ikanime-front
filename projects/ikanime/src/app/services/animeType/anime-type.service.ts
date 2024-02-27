@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Injectable, Signal, inject, signal } from '@angular/core';
 import { environment } from 'projects/ikanime/src/environments/environment';
 import * as API_INTERFACES from '../../interfaces/api';
 import * as API_MODELS from '../../models/api';
@@ -23,7 +23,20 @@ export class AnimeTypeService {
 
   private _http = inject(HttpClient)
   private _baseUrl = environment.API_URL
+  private _types = signal<Pagination<AnimeType[]> | null>(null)
 
+  public get types(): Signal<Pagination<AnimeType[]> | null>{
+    return this._types.asReadonly()
+  }
+
+  public setTypes(value: Pagination<AnimeType[]>): void{
+    this._types.set(value)
+  }
+
+  public updateTypes(updateFn: (value: Pagination<AnimeType[]> | null) => Pagination<AnimeType[]> | null): void{
+    this._types.update(updateFn)
+  }
+  
   find(options: FindOptions = {}): Rxjs.Observable<Pagination<AnimeType[]> | null>{
     let url = `${this._baseUrl}/anime/type/find`;
     if(options.queries){
