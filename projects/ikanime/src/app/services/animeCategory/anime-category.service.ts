@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, Signal, inject, signal } from '@angular/core';
 import { environment } from 'projects/ikanime/src/environments/environment';
 import * as Rxjs from 'rxjs'
 import * as API_INTERFACES from '../../interfaces/api';
@@ -23,7 +23,20 @@ export class AnimeCategoryService {
 
   private _http = inject(HttpClient)
   private _baseUrl = environment.API_URL
+  private _categories = signal<Pagination<AnimeCategory[]> | null>(null)
 
+  public get categories(): Signal<Pagination<AnimeCategory[]> | null>{
+    return this._categories.asReadonly()
+  }
+
+  public setCategories(value: Pagination<AnimeCategory[]>): void{
+    this._categories.set(value)
+  }
+
+  public updateCategories(updateFn: (value: Pagination<AnimeCategory[]> | null) => Pagination<AnimeCategory[]> | null): void{
+    this._categories.update(updateFn)
+  }
+  
   find(options: FindOptions = {}): Rxjs.Observable<Pagination<AnimeCategory[]> | null>{
     let url = `${this._baseUrl}/anime/category/find`;
     if(options.queries){
