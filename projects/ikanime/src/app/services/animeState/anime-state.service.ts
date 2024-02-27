@@ -58,6 +58,26 @@ export class AnimeStateService {
         );
   }
 
+  findAndSetStates(options: FindOptions = {}){
+    return this.find(options).pipe(
+        Rxjs.tap((response)=>{
+          if(response){
+            this.setStates({
+              hasError: false,
+              isLoad: true,
+              isLoading: false,
+              item: response
+            })
+          }else{
+            this.setStates({
+              hasError: true,
+              isLoad: false,
+              isLoading: false,
+            })
+          }
+        }),
+      )
+  }
   
   private _handleError(error: HttpErrorResponse) {
     return Rxjs.of(null)
