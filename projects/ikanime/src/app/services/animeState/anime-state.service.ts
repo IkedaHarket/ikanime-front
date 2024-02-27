@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Injectable, Signal, inject, signal } from '@angular/core';
 import { environment } from 'projects/ikanime/src/environments/environment';
 import * as API_INTERFACES from '../../interfaces/api';
 import * as API_MODELS from '../../models/api';
@@ -22,7 +22,20 @@ export class AnimeStateService {
 
   private _http = inject(HttpClient)
   private _baseUrl = environment.API_URL
+  private _states = signal<Pagination<AnimeState[]> | null>(null)
 
+  public get states(): Signal<Pagination<AnimeState[]> | null>{
+    return this._states.asReadonly()
+  }
+
+  public setStates(value: Pagination<AnimeState[]>): void{
+    this._states.set(value)
+  }
+
+  public updateStates(updateFn: (value: Pagination<AnimeState[]> | null) => Pagination<AnimeState[]> | null): void{
+    this._states.update(updateFn)
+  }
+  
   find(options: FindOptions = {}): Rxjs.Observable<Pagination<AnimeState[]> | null>{
     let url = `${this._baseUrl}/anime/state/find`;
     if(options.queries){
