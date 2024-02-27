@@ -2,8 +2,8 @@ import { CategoryFindResponse } from "../../interfaces/api";
 import { AnimeCategory } from "../../models/anime";
 
 
-export function convertToCategory(animeResponse: CategoryFindResponse[]): AnimeCategory[]{
-    return animeResponse.map( (category) => new AnimeCategory ({
+export function convertToCategory(categoryResponse: CategoryFindResponse[]): AnimeCategory[]{
+    return categoryResponse.map( (category) => new AnimeCategory ({
         id: category.id,
         name: category.name,
         isActive: !!category.isActive,
