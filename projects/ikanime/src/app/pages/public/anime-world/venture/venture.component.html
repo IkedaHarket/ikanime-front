@@ -8,7 +8,14 @@
                 label: 'Estado',
             }"
         >
-    
+            <div #options>
+                @for (category of categories().item?.records; track $index) {
+                    <div>
+                        <input type="checkbox" name="category" [id]="category.id" title="category">
+                        <label [for]="category.id">{{ category.name }}</label>
+                    </div>
+                }
+            </div>
         </web-multiselect>
     </div>
 </section>
