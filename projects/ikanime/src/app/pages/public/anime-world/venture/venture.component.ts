@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
     WebComponents.CaptionComponent, 
     WebComponents.MultiselectComponent,
     WebComponents.BasicOptionComponent,
+    WebComponents.ButtonComponent,
    ],
   templateUrl: './venture.component.html'
 })

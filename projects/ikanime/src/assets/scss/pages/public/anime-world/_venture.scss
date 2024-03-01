@@ -9,6 +9,7 @@ section.ik-anime-world-venture{
         display: flex;
         gap: 10px;
         flex-wrap: wrap;
+        position: relative;
         web-multiselect{
             width: auto;
             .ik-anime-world-venture__search-section-input-category{
@@ -26,7 +27,11 @@ section.ik-anime-world-venture{
                 }
             }
         }
-        
+        web-button.btn-small{
+            position: absolute;
+            right: 30px;
+            bottom: -20px;
+        }
 
     }
 }
