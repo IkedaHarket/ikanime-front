@@ -8,6 +8,7 @@ section.ik-anime-world-venture{
         padding: 30px 40px;
         display: flex;
         gap: 10px;
+        flex-wrap: wrap;
         web-multiselect{
             width: auto;
             .ik-anime-world-venture__search-section-input-category{

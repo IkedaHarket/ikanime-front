@@ -35,6 +35,24 @@
                 }
             </div>
         </web-multiselect>
+        <web-multiselect
+            [props]="{
+                label: 'Tipo',
+            }"
+        >
+            <div #options>
+                @for (type of types().item?.records; track $index) {
+                    <web-basic-option [option]="{
+                        key: type.id,
+                        label: type.name | titlecase,
+                        name: 'Tipo',
+                        title: 'Tipo',
+                    }">
+
+                    </web-basic-option>
+                }
+            </div>
+        </web-multiselect>
 
     </div>
 </section>
