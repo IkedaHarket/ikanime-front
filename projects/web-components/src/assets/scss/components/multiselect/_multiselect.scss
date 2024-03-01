@@ -1,6 +1,6 @@
-@use './../variables/colors' as color;
-@use '../variables/variables' as var;
-@use '../base/fonts';
+@use './../../variables/colors' as color;
+@use '../../variables/variables' as var;
+@use '../../base/fonts';
 
 div.web-multiselect{
     position: relative;
@@ -13,8 +13,9 @@ div.web-multiselect{
         display: flex;
         height: 3rem;
         justify-content: space-between;
-        max-width: 17.5rem;
+        min-width: 17.5rem;
         padding: 0 10px;
+        cursor: pointer;
     }
     .web-multiselect-input__option{
         background-color: map-get(color.$bg-color, "primary", "default" );
@@ -24,5 +25,6 @@ div.web-multiselect{
         padding: 10px;
         position: absolute;
         top: 40px;
+        z-index: 100;
     }
 }

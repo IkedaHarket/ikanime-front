@@ -5,17 +5,36 @@
     <div class="web-bg-card web-mt-2 ik-anime-world-venture__search-section">
         <web-multiselect
             [props]="{
-                label: 'Estado',
+                label: 'Categoria',
             }"
         >
-            <div #options>
+            <div #options class="ik-anime-world-venture__search-section-input-category">
                 @for (category of categories().item?.records; track $index) {
                     <div>
-                        <input type="checkbox" name="category" [id]="category.id" title="category">
-                        <label [for]="category.id">{{ category.name }}</label>
+                        <input type="checkbox" name="category" [id]="category.id" title="Categoria">
+                        <label [for]="category.id">{{ category.name | titlecase }}</label>
                     </div>
                 }
             </div>
         </web-multiselect>
+        <web-multiselect
+            [props]="{
+                label: 'Estado',
+            }"
+        >
+            <div #options>
+                @for (state of states().item?.records; track $index) {
+                    <web-basic-option [option]="{
+                        key: state.id,
+                        label: state.name | titlecase,
+                        name: 'Estado',
+                        title: 'Estado',
+                    }">
+
+                    </web-basic-option>
+                }
+            </div>
+        </web-multiselect>
+
     </div>
 </section>

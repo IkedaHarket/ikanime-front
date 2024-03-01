@@ -1,0 +1,13 @@
+
+@use '../../base/fonts';
+
+div.web-multiselect-basic-option{
+    display: flex;
+    gap: 5px;
+    @extend .web-f;
+    @extend .fs-12;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-width: max-content;
+}

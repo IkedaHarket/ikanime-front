@@ -12,5 +12,6 @@ export * from './lib/components/anime-card-info/anime-card-info.component'
 export * from './lib/components/anime-card/anime-card.component'
 export * from './lib/components/nav-button/nav-button.component'
 export * from './lib/components/multiselect/multiselect.component'
+export * from './lib/components/multiselect/basic-option/basic-option.component'
 
 export * from './lib/directives/clickOutside/click-outside.directive'
