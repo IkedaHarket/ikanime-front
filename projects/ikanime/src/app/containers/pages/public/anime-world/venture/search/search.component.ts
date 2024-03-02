@@ -70,7 +70,12 @@ export class SearchComponent {
     
     this._animeService.find({
       body:{
-        states: this.formatFormProperty('states')
+        states: this.formatFormProperty('states'),
+        types: this.formatFormProperty('types'),
+        categories:{
+          mode: 'some',
+          in: this.formatFormProperty('categories')
+        }
       }
     }).subscribe(console.log)
   }
