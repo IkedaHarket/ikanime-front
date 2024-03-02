@@ -1,8 +1,14 @@
-// @use "../../../../../../../web-components/src/assets/scss/variables/colors" as color;
-// @use "../../../../../../../web-components/src/assets/scss/variables/variables" as var;
-// @use "../../../../../../../web-components/src/assets/scss/base/fonts";
-// @use "../../../../../../../web-components/src/assets/scss/base/scrolls" as scroll;
+@use "../../../../../../../web-components/src/assets/scss/variables/colors" as color;
+@use "../../../../../../../web-components/src/assets/scss/variables/variables" as var;
+@use "../../../../../../../web-components/src/assets/scss/base/fonts";
+@use "../../../../../../../web-components/src/assets/scss/base/scrolls" as scroll;
 
-// section.ik-anime-world-venture{
-    
-// }
+section.ik-anime-world-venture{
+    section.ik-anime-world-venture__animes{
+        margin-top: 70px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px 30px;
+        justify-content: center;
+    }
+}

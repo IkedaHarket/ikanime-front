@@ -16,7 +16,6 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   templateUrl: './anime-world.component.html',
-  styleUrl: './anime-world.component.scss'
 })
 export class AnimeWorldComponent implements OnInit {
 
@@ -28,6 +27,12 @@ export class AnimeWorldComponent implements OnInit {
     this._categoryService.findAndSetCategories().subscribe()
     this._stateService.findAndSetStates().subscribe()
     this._typeService.findAndSetTypes().subscribe()
+  }
+
+  dataIsLoaded(){
+    return this._categoryService.categories().isLoad &&
+    this._stateService.states().isLoad &&
+    this._typeService.types().isLoad 
   }
 
 }

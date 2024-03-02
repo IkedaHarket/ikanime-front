@@ -8,7 +8,6 @@ import * as Service from 'projects/ikanime/src/app/services';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 type FormFieldName = 'categories' | 'states' | 'types'
-
 @Component({
   selector: 'app-search',
   standalone: true,
@@ -23,16 +22,15 @@ type FormFieldName = 'categories' | 'states' | 'types'
   templateUrl: './search.component.html'
 })
 export class SearchComponent {
+  public categories !: Signal<DataWithStatus<Pagination<AnimeCategory[]>>>
+  public states !: Signal<DataWithStatus<Pagination<AnimeState[]>>>
+  public types !: Signal<DataWithStatus<Pagination<AnimeType[]>>>
 
   private _animeService = inject(Service.AnimeService)
   private _categoryService = inject(Service.AnimeCategoryService)
   private _stateService = inject(Service.AnimeStateService)
   private _typeService = inject(Service.AnimeTypeService)
   private _fb = inject(FormBuilder)
-
-  public categories !: Signal<DataWithStatus<Pagination<AnimeCategory[]>>>
-  public states !: Signal<DataWithStatus<Pagination<AnimeState[]>>>
-  public types !: Signal<DataWithStatus<Pagination<AnimeType[]>>>
 
   public form = this._fb.group({
     categories: this._fb.group({}),
@@ -45,6 +43,7 @@ export class SearchComponent {
     this.states = this._stateService.states
     this.types = this._typeService.types
     this.initForm()
+    this.search()
   }
 
   findFormGroup(fieldName:FormFieldName, value : string) : FormControl{
@@ -65,10 +64,12 @@ export class SearchComponent {
   }
 
   
-  search(){
-    // if(this.form.invalid) return
-    
-    this._animeService.find({
+  search(){    
+    this._animeService.findAndSetAnimes({
+      queries:{
+        page: 1,
+        limit:18,
+      },
       body:{
         states: this.formatFormProperty('states'),
         types: this.formatFormProperty('types'),
@@ -77,7 +78,7 @@ export class SearchComponent {
           in: this.formatFormProperty('categories')
         }
       }
-    }).subscribe(console.log)
+    }).subscribe()
   }
   private formatFormProperty(field: FormFieldName){
     return Object.entries(this.form.get(field)!.value).filter(([_,value]) => value).map(([id,_])=> id)

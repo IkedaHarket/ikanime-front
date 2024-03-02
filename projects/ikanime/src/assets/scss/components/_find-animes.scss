@@ -13,12 +13,12 @@ div.ik-findAnimes-component{
         input{
             @extend .web-f;
             background: #ffffff00;
-            height: 4rem;
-            width: 20rem;
-            outline: none;
             border: none;
-            padding: 0 20px 0 0;
             color: map-get(color.$text-color , "white" );
+            height: 4rem;
+            outline: none;
+            padding: 0 20px 0 0;
+            width: 20rem;
             &::placeholder{
                 color: map-get(color.$text-color , "white" );
             }
@@ -29,21 +29,22 @@ div.ik-findAnimes-component{
     }
     .ik-findAnimes-component-response{
         @include scroll.simple-scroll;
-        width: calc(100% + 20px);
-        left: -10px;
-        box-shadow: map-get(var.$box-shadow, "size-4" );
-        position: absolute;
-        top: 50px;
         background-color: map-get( color.$bg-color , "primary", "default" );
+        border-radius: map-get( var.$border-radius, "400" );
+        box-shadow: map-get(var.$box-shadow, "size-4" );
+        left: -30px;
         max-height: 40rem;
         overflow-y: auto;
-        border-radius: map-get( var.$border-radius, "400" );
+        position: absolute;
+        top: 50px;
+        width: calc(100% + 60px);
+        z-index: 200;
         .ik-findAnimes-component-response-anime{
+            align-items: center;
+            border-bottom: 1px solid map-get(color.$color, "grey", "200");
             display: flex;
             gap: 10px;
-            align-items: center;
-            padding: 5px 0;
-            border-bottom: 1px solid map-get(color.$color, "grey", "200");
+            padding: 5px 0 5px 10px;
             picture{
                 min-width: 70px;
                 height: 70px;
@@ -62,10 +63,10 @@ div.ik-findAnimes-component{
             }
         }
         .ik-findAnimes-component-response-anime-404{
-            height: 5rem;
-            display: flex;
-            justify-content: center;
             align-items: center;
+            display: flex;
+            height: 5rem;
+            justify-content: center;
             span{
                 @extend .web-f; 
                 @extend .fs-14;

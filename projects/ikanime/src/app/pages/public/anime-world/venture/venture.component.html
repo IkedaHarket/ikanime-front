@@ -2,6 +2,23 @@
     <web-caption icon="../../../../../assets/onigiris/asaka.png">
         <h2 #caption>Todos los animes</h2>
     </web-caption>
-    <app-search *ngIf="dataIsLoaded()"></app-search>
-    
+    <app-search></app-search>
+    <section class="ik-anime-world-venture__animes">
+        @for (anime of animes().item?.records; track $index) {
+            <web-anime-card
+            [props]="{
+                size: 'normal',
+                anime: {
+                    image: anime.image,
+                    badge: {
+                        color: anime.type.color,
+                        text: anime.type.name
+                    },
+                    title: anime.name
+                },
+            }"
+            >
+            </web-anime-card>
+        }
+    </section>
 </section>

@@ -1,5 +1,9 @@
 <app-header></app-header>
-<main class="ik-layout-anime-world">
-    <router-outlet></router-outlet>
-</main>
+@if (dataIsLoaded()) {
+    <main class="ik-layout-anime-world">
+        <router-outlet></router-outlet>
+    </main>
+}@else {
+    <p>Cargando...</p>
+}
 <app-footer></app-footer>
