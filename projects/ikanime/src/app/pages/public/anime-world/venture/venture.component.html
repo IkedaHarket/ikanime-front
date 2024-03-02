@@ -3,6 +3,9 @@
         <h2 #caption>Todos los animes</h2>
     </web-caption>
     <app-search></app-search>
+    @if(paginatorObject()){
+        <web-paginator [pagination]="$any(paginatorObject)"></web-paginator>
+    }
     <section class="ik-anime-world-venture__animes">
         @for (anime of animes().item?.records; track $index) {
             <web-anime-card

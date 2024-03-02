@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import * as WebComponents from '@webComponents';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from 'projects/ikanime/src/app/containers/pages/public/anime-world/venture/search/search.component';
@@ -10,16 +10,26 @@ import { AnimeService } from 'projects/ikanime/src/app/services';
   imports: [ 
     CommonModule, 
     WebComponents.CaptionComponent,
+    WebComponents.AnimeCardComponent,
+    WebComponents.PaginatorComponent,
     SearchComponent,
-    WebComponents.AnimeCardComponent
    ],
   templateUrl: './venture.component.html'
 })
-export class VentureComponent {
+export class VentureComponent implements OnInit{
 
   private _animeService = inject(AnimeService)
   
   public animes = this._animeService.animes
 
+  // public paginatorObject = signal<WebComponents.Pagination | null>(null)
+  public paginatorObject = computed<WebComponents.Pagination | null>(()=> {
+    if(!this.animes().isLoad || !this.animes().item) return null
+    const { limit, page, total} = this.animes().item!
+    return { limit, page, total } as WebComponents.Pagination
+  })
 
+  ngOnInit(): void {
+
+  }
 }
