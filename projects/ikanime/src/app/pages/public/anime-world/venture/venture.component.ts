@@ -1,37 +1,29 @@
-import { Component, OnInit, Signal, inject, } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import * as WebComponents from '@webComponents';
-import { DataWithStatus } from 'projects/ikanime/src/app/interfaces';
-import { Pagination } from 'projects/ikanime/src/app/models';
-import { AnimeCategory, AnimeState, AnimeType } from 'projects/ikanime/src/app/models/anime';
-import * as Service from 'projects/ikanime/src/app/services';
 import { CommonModule } from '@angular/common';
+import * as Service from '../../../../services'
+import { SearchComponent } from 'projects/ikanime/src/app/containers/pages/public/anime-world/venture/search/search.component';
 
 @Component({
   selector: 'app-venture',
   standalone: true,
   imports: [ 
     CommonModule, 
-    WebComponents.CaptionComponent, 
-    WebComponents.MultiselectComponent,
-    WebComponents.BasicOptionComponent,
-    WebComponents.ButtonComponent,
+    WebComponents.CaptionComponent,
+    SearchComponent
    ],
   templateUrl: './venture.component.html'
 })
-export class VentureComponent implements OnInit {
+export class VentureComponent {
 
-  private _categoryService = inject(Service.AnimeCategoryService)
-  private _stateService = inject(Service.AnimeStateService)
-  private _typeService = inject(Service.AnimeTypeService)
+  public _categoryService = inject(Service.AnimeCategoryService)
+  public _stateService = inject(Service.AnimeStateService)
+  public _typeService = inject(Service.AnimeTypeService)
 
-  public categories !: Signal<DataWithStatus<Pagination<AnimeCategory[]>>>
-  public states !: Signal<DataWithStatus<Pagination<AnimeState[]>>>
-  public types !: Signal<DataWithStatus<Pagination<AnimeType[]>>>
-
-  ngOnInit(): void {
-    this.categories = this._categoryService.categories
-    this.states = this._stateService.states
-    this.types = this._typeService.types
+  dataIsLoaded(){
+    return this._categoryService.categories().isLoad &&
+    this._stateService.states().isLoad &&
+    this._typeService.types().isLoad 
   }
 
 }

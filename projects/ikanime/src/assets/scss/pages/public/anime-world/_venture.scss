@@ -1,37 +1,8 @@
-@use "../../../../../../../web-components/src/assets/scss/variables/colors" as color;
-@use "../../../../../../../web-components/src/assets/scss/variables/variables" as var;
-@use "../../../../../../../web-components/src/assets/scss/base/fonts";
-@use "../../../../../../../web-components/src/assets/scss/base/scrolls" as scroll;
+// @use "../../../../../../../web-components/src/assets/scss/variables/colors" as color;
+// @use "../../../../../../../web-components/src/assets/scss/variables/variables" as var;
+// @use "../../../../../../../web-components/src/assets/scss/base/fonts";
+// @use "../../../../../../../web-components/src/assets/scss/base/scrolls" as scroll;
 
-section.ik-anime-world-venture{
-    div.ik-anime-world-venture__search-section{
-        padding: 30px 40px;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        position: relative;
-        web-multiselect{
-            width: auto;
-            .ik-anime-world-venture__search-section-input-category{
-                display: grid;
-                gap: 5px 10px;
-                grid-template-columns: repeat(3, 1fr);
-                max-width: max-content;
-                div{
-                    @extend .web-f;
-                    @extend .fs-12;
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                    min-width: max-content;
-                }
-            }
-        }
-        web-button.btn-small{
-            position: absolute;
-            right: 30px;
-            bottom: -20px;
-        }
-
-    }
-}
+// section.ik-anime-world-venture{
+    
+// }

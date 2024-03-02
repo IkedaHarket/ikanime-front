@@ -1,0 +1,58 @@
+<form class="web-bg-card web-mt-2 ik-anime-world-venture__search-section" [formGroup]="form">
+    <web-multiselect
+        [props]="{
+            label: 'Categoria',
+        }"
+    >
+        <div #options class="ik-anime-world-venture__search-section-input-category">
+            @for (category of categories().item?.records; track $index) {
+                <web-basic-option [formControl]="findFormGroup('categories', category.id)" [option]="{
+                    key: category.id,
+                    label: category.name | titlecase,
+                    name: 'Categoria',
+                    title: 'Categoria',
+                }">
+                </web-basic-option>
+            }
+        </div>
+    </web-multiselect>
+    <web-multiselect
+        [props]="{
+            label: 'Estado',
+        }"
+    >
+        <div #options>
+            @for (state of states().item?.records; track $index) {
+                <web-basic-option [formControl]="findFormGroup('states', state.id)" [option]="{
+                    key: state.id,
+                    label: state.name | titlecase,
+                    name: 'Estado',
+                    title: 'Estado',
+                }">
+
+                </web-basic-option>
+            }
+        </div>
+    </web-multiselect>
+    <web-multiselect
+        [props]="{
+            label: 'Tipo',
+        }"
+    >
+        <div #options>
+            @for (type of types().item?.records; track $index) {
+                <web-basic-option [formControl]="findFormGroup('types', type.id)" [option]="{
+                    key: type.id,
+                    label: type.name | titlecase,
+                    name: 'Tipo',
+                    title: 'Tipo',
+                }">
+
+                </web-basic-option>
+            }
+        </div>
+    </web-multiselect>
+    <web-button class="btn-small">
+        <span #label>Buscar</span>
+    </web-button>
+</form>
