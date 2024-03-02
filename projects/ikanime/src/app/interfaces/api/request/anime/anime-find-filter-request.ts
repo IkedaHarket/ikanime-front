@@ -1,6 +1,8 @@
 export interface AnimeFindFilterRequest{
-    logic?: 'AND' | 'OR',
-    orderBy?: { createdAt: 'desc' | 'asc' },
-    name?: { contains?: string },
     categories?: { mode: 'every' | 'some' | 'none', in: string[] },
+    logic?: 'AND' | 'OR',
+    name?: { contains?: string },
+    orderBy?: { createdAt: 'desc' | 'asc' },
+    states?: string[],
+    types?: string[],
 }

@@ -7,6 +7,8 @@ import { AnimeCategory, AnimeState, AnimeType } from 'projects/ikanime/src/app/m
 import * as Service from 'projects/ikanime/src/app/services';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
+type FormFieldName = 'categories' | 'states' | 'types'
+
 @Component({
   selector: 'app-search',
   standalone: true,
@@ -22,6 +24,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angul
 })
 export class SearchComponent {
 
+  private _animeService = inject(Service.AnimeService)
   private _categoryService = inject(Service.AnimeCategoryService)
   private _stateService = inject(Service.AnimeStateService)
   private _typeService = inject(Service.AnimeTypeService)
@@ -44,7 +47,7 @@ export class SearchComponent {
     this.initForm()
   }
 
-  findFormGroup(fieldName: 'categories' | 'states' | 'types', value: string) : FormControl{
+  findFormGroup(fieldName:FormFieldName, value : string) : FormControl{
     return this.form.get(fieldName)!.get(value) as FormControl
   }
 
@@ -61,4 +64,17 @@ export class SearchComponent {
     })
   }
 
+  
+  search(){
+    // if(this.form.invalid) return
+    
+    this._animeService.find({
+      body:{
+        states: this.formatFormProperty('states')
+      }
+    }).subscribe(console.log)
+  }
+  private formatFormProperty(field: FormFieldName){
+    return Object.entries(this.form.get(field)!.value).filter(([_,value]) => value).map(([id,_])=> id)
+  }
 }
