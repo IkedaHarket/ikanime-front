@@ -3,6 +3,7 @@ import * as WebComponents from '@webComponents';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from 'projects/ikanime/src/app/containers/pages/public/anime-world/venture/search/search.component';
 import { AnimeService } from 'projects/ikanime/src/app/services';
+import { environment } from 'projects/ikanime/src/environments/environment';
 
 @Component({
   selector: 'app-venture',
@@ -34,7 +35,7 @@ export class VentureComponent {
       .updateFindFilters((currentFilters)=>({
         ...currentFilters,
         queries:{
-          limit: 18,
+          limit: environment.VENTURE.ANIMES_PEERS_PAGE,
           ...currentFilters,
           page,
         }

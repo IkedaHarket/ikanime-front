@@ -6,6 +6,7 @@ import { Pagination } from 'projects/ikanime/src/app/models';
 import { AnimeCategory, AnimeState, AnimeType } from 'projects/ikanime/src/app/models/anime';
 import * as Service from 'projects/ikanime/src/app/services';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { environment } from 'projects/ikanime/src/environments/environment';
 
 type FormFieldName = 'categories' | 'states' | 'types'
 @Component({
@@ -70,7 +71,7 @@ export class SearchComponent {
       .setFindFilters({
         queries:{
           page: 1,
-          limit:18,
+          limit: environment.VENTURE.ANIMES_PEERS_PAGE,
         },
         body:{
           states: this.formatFormProperty('states'),
