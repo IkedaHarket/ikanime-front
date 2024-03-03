@@ -22,14 +22,19 @@ export class VentureComponent {
   private _animeService = inject(AnimeService)
   
   public animes = this._animeService.animes
-
+  public currentPage: number = 1;
   public paginatorObject = computed<WebComponents.Pagination | null>(()=> {
     if(!this.animes().isLoad || !this.animes().item) return null
     const { limit, page, total} = this.animes().item!
     return { limit, page, total } as WebComponents.Pagination
   })
 
+  resetPaginator(){
+    this.currentPage = 1;
+  }
+
   changePage(page: number){
+    this.currentPage = page
     this._animeService.findAnimeBuilder()
       .setAnimes(true)
       .updateFindFilters((currentFilters)=>({

@@ -2,7 +2,7 @@
     <web-caption icon="../../../../../assets/onigiris/asaka.png">
         <h2 #caption>Todos los animes</h2>
     </web-caption>
-    <app-search></app-search>
+    <app-search (onClickSearchButton)="resetPaginator()" ></app-search>
     <section class="ik-anime-world-venture__animes">
         @for (anime of animes().item?.records; track $index) {
             <web-anime-card
@@ -23,7 +23,7 @@
     </section>
     <section class="ik-anime-world-venture__paginator">
         @if(paginatorObject()){
-            <web-paginator [pagination]="$any(paginatorObject)" (onChangePage)="changePage($event)"></web-paginator>
+            <web-paginator [pagination]="$any(paginatorObject)" (onChangePage)="changePage($event)" [currentPage]="currentPage"></web-paginator>
         }
     </section>
 </section>

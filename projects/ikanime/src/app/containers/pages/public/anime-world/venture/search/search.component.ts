@@ -1,4 +1,4 @@
-import { Component, Signal, inject } from '@angular/core';
+import { Component, EventEmitter, Output, Signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as WebComponents from '@webComponents';
 import { DataWithStatus } from 'projects/ikanime/src/app/interfaces';
@@ -23,6 +23,9 @@ type FormFieldName = 'categories' | 'states' | 'types'
   templateUrl: './search.component.html'
 })
 export class SearchComponent {
+
+  @Output() onClickSearchButton = new EventEmitter<true>() 
+
   public categories !: Signal<DataWithStatus<Pagination<AnimeCategory[]>>>
   public states !: Signal<DataWithStatus<Pagination<AnimeState[]>>>
   public types !: Signal<DataWithStatus<Pagination<AnimeType[]>>>
@@ -66,6 +69,7 @@ export class SearchComponent {
 
   
   search(){    
+    this.onClickSearchButton.emit(true)
     this._animeService.findAnimeBuilder()
       .setAnimes(true)
       .setFindFilters({
