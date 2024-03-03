@@ -42,6 +42,20 @@ export class AnimeService {
     this._animes.update(updateFn)
   }
 
+  private _findFilters = signal<FindOptions>({})
+
+  public get findFilters(): Signal<FindOptions>{
+    return this._findFilters.asReadonly()
+  }
+
+  public setFindFilters(value: FindOptions): void{
+    this._findFilters.set(value)
+  }
+
+  public updateFindFilters(updateFn: (value: FindOptions) => FindOptions): void{
+    this._findFilters.update(updateFn)
+  }
+
   find(options: FindOptions = {}): Rxjs.Observable<Pagination<Anime[]> | null>{
     let url = `${this._baseUrl}/anime/find`;
     if(options.queries){
@@ -61,7 +75,8 @@ export class AnimeService {
         );
   }
 
-  findAndSetAnimes(options: FindOptions = {}){
+  findAndSetAnimesAndSetFilters(options: FindOptions = {}){
+    this.setFindFilters(options)
     return this.find(options).pipe(
         Rxjs.tap((response)=>{
           if(response){

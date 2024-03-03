@@ -23,7 +23,7 @@
     </section>
     <section class="ik-anime-world-venture__paginator">
         @if(paginatorObject()){
-            <web-paginator [pagination]="$any(paginatorObject)"></web-paginator>
+            <web-paginator [pagination]="$any(paginatorObject)" (onChangePage)="changePage($event)"></web-paginator>
         }
     </section>
 </section>

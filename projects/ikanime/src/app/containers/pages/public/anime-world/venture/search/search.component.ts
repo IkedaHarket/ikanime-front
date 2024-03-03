@@ -65,7 +65,7 @@ export class SearchComponent {
 
   
   search(){    
-    this._animeService.findAndSetAnimes({
+    this._animeService.findAndSetAnimesAndSetFilters({
       queries:{
         page: 1,
         limit:4,
