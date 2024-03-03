@@ -29,13 +29,17 @@ export class VentureComponent {
   })
 
   changePage(page: number){
-    this._animeService.findAndSetAnimesAndSetFilters({
-      ...this._animeService.findFilters(),
-      queries:{
-        limit: 18,
-        ...this._animeService.findFilters(),
-        page,
-      }
-    }).subscribe()
+    this._animeService.findAnimeBuilder()
+      .setAnimes(true)
+      .updateFindFilters((currentFilters)=>({
+        ...currentFilters,
+        queries:{
+          limit: 18,
+          ...currentFilters,
+          page,
+        }
+      }))
+      .build().subscribe()
+      
   }
 }

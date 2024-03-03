@@ -58,21 +58,24 @@ export class FindAnimesComponent implements OnInit {
 
   updateAnimeToFind(newValue: string): void {
     this.animesNotFound = false 
+    
     if(newValue.trim().length === 0){
       this.animes = []
       return
     }
 
-    this._animeService.find({
-      queries:{ limit: 10, page:1 },
-      body: { name: { contains: newValue }, }
-    }).subscribe((resp)=>{
-      if(!resp) return
-      this.animes = resp.records
-      if(this.animes.length === 0){
-        this.animesNotFound = true
-      }
-    })
-  }
+    this._animeService.findAnimeBuilder()
+      .build({
+        queries:{ limit: 10, page:1 },
+        body: { name: { contains: newValue }, }
+      }).subscribe((resp)=>{
+        if(!resp) return
+        this.animes = resp.records
+        if(this.animes.length === 0){
+          this.animesNotFound = true
+        }
+      })
+
+    }
 
 }

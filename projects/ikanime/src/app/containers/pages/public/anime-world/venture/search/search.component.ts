@@ -65,20 +65,23 @@ export class SearchComponent {
 
   
   search(){    
-    this._animeService.findAndSetAnimesAndSetFilters({
-      queries:{
-        page: 1,
-        limit:4,
-      },
-      body:{
-        states: this.formatFormProperty('states'),
-        types: this.formatFormProperty('types'),
-        categories:{
-          mode: 'some',
-          in: this.formatFormProperty('categories')
+    this._animeService.findAnimeBuilder()
+      .setAnimes(true)
+      .setFindFilters({
+        queries:{
+          page: 1,
+          limit:18,
+        },
+        body:{
+          states: this.formatFormProperty('states'),
+          types: this.formatFormProperty('types'),
+          categories:{
+            mode: 'some',
+            in: this.formatFormProperty('categories')
+          }
         }
-      }
-    }).subscribe()
+      })
+      .build().subscribe()
   }
   private formatFormProperty(field: FormFieldName){
     return Object.entries(this.form.get(field)!.value).filter(([_,value]) => value).map(([id,_])=> id)
