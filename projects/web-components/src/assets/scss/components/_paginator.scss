@@ -1,0 +1,43 @@
+@use '../variables/colors' as color;
+@use '../variables/variables' as var;
+@use '../base/fonts';
+
+div.web-paginator{
+    background-color: map-get( color.$bg-color, "business", "default");
+    border-radius: map-get( var.$border-radius, "400" );
+    height: 50px;
+    width: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    web-paginator-left-arrow,
+    web-paginator-right-arrow{
+        display: flex;
+    }
+    .web-paginator__numbers{
+        display: flex;
+        align-items: center;
+        min-width: 120px;
+        justify-content: center;
+        span{
+            @extend .web-f;
+            margin: 0 7px;
+            color: map-get( color.$text-color , "white" );
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            &:hover{
+                @extend .fw-bold;
+            }
+            &.selected{
+                @extend .fw-bold;
+                background-color: map-get( color.$bg-color, "business", "700");
+                padding: .2rem .7rem;
+                display: inline-block;
+                text-align: center;
+                border-radius: map-get( var.$border-radius, "400" );
+            }
+        }
+    }
+}

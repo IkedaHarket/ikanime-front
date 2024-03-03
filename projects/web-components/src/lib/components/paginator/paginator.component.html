@@ -2,19 +2,21 @@
     @if (currentPage > 1) {
         <web-paginator-left-arrow (click)="setPage(currentPage - 1)"></web-paginator-left-arrow>
     }
-    @if (currentPage > 2) {
-        <span (click)="setPage(currentPage - 2)">{{currentPage - 2}}</span>
-    }
-    @if (currentPage > 1) {
-        <span (click)="setPage(currentPage - 1)">{{currentPage - 1}}</span>
-    }
-    <span (click)="setPage(currentPage)" class="selected">{{currentPage}}</span>
-    @if (totalPages() > currentPage) {
-        <span (click)="setPage(currentPage + 1)">{{currentPage + 1}}</span>
-    }
-    @if (totalPages() > currentPage + 1) {
-        <span (click)="setPage(currentPage + 2)">{{currentPage + 2}}</span>
-    }
+    <div class="web-paginator__numbers">
+        @if (currentPage > 2) {
+            <span (click)="setPage(currentPage - 2)">{{currentPage - 2}}</span>
+        }
+        @if (currentPage > 1) {
+            <span (click)="setPage(currentPage - 1)">{{currentPage - 1}}</span>
+        }
+        <span (click)="setPage(currentPage)" class="selected">{{currentPage}}</span>
+        @if (totalPages() > currentPage) {
+            <span (click)="setPage(currentPage + 1)">{{currentPage + 1}}</span>
+        }
+        @if (totalPages() > currentPage + 1) {
+            <span (click)="setPage(currentPage + 2)">{{currentPage + 2}}</span>
+        }
+    </div>
     @if(totalPages() > currentPage){
         <web-paginator-right-arrow (click)="setPage(currentPage + 1)"></web-paginator-right-arrow>
     }

@@ -68,7 +68,7 @@ export class SearchComponent {
     this._animeService.findAndSetAnimes({
       queries:{
         page: 1,
-        limit:18,
+        limit:4,
       },
       body:{
         states: this.formatFormProperty('states'),
