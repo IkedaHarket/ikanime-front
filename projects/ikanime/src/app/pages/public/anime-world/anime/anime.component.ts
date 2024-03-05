@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { AnimeService } from 'projects/ikanime/src/app/services';
 
 @Component({
   selector: 'app-anime',
@@ -6,6 +7,15 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './anime.component.html'
 })
-export class AnimeComponent {
+export class AnimeComponent implements OnInit{
+
+  private _animeService = inject(AnimeService)
+
+  ngOnInit(): void {
+    this._animeService.findAnimeBuilder().setFindFilters({
+      
+    })
+    
+  }
 
 }
