@@ -4,14 +4,14 @@
 
 span.web-badge-category{
     @extend .web-f;
-    @extend .fs-11;
+    @extend .fs-12;
     align-items: center;
     background-color: map-get(color.$bg-color, "grey", "600");
     border-radius: map-get(var.$border-radius, "default" );
     color: map-get(color.$text-color , "white" );
     display: inline-flex;
-    height: 2rem;
+    height: 2.5rem;
     justify-content: center;
     min-width: 6rem;
-    padding: 0 10px;
+    padding: 0 20px;
 }

@@ -1,3 +1,60 @@
+@use "../../../../../../../web-components/src/assets/scss/variables/colors" as color;
+@use "../../../../../../../web-components/src/assets/scss/variables/variables" as var;
+@use "../../../../../../../web-components/src/assets/scss/base/fonts";
+@use "../../../../../../../web-components/src/assets/scss/base/scrolls" as scroll;
+
 section.ik-anime-world-anime{
-    
+    .ik-anime-world-anime-header-card{
+        position: relative;
+        padding: 50px 10px 10px 100px;
+        display: flex;
+        gap: 70px;
+        .ik-anime-world-anime-header-card__img{
+            position: relative;
+            padding-bottom: 40px;
+            picture{
+                display: flex;
+                width: 250px;
+                img{
+                    border-radius: map-get( var.$border-radius, "400" );
+                    object-fit: contain;
+                }
+            }
+            web-button{
+                position: absolute;
+                left: 15px;
+                bottom: -35px;
+            }
+        }
+        .ik-anime-world-anime-header-card__info{
+            .ik-anime-world-anime-header-card__info-title{
+                margin: 10px 0;
+                h1{
+                    @extend .web-f;
+                    @extend .fs-24;
+                }
+            }
+            p{
+                @extend .web-f;
+                @include scroll.simple-scroll;
+                overflow-y: auto;
+                max-height: 200px;
+                margin-right: 10px;
+            }
+        }
+        .ik-anime-world-anime-header-card__info__categories{
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+        }
+        .ik-anime-world-anime-header-card__buttons{
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: end;
+        }
+    }
 }

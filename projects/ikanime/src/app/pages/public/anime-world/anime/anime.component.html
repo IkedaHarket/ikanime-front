@@ -1,5 +1,43 @@
 <section class="ik-anime-world-anime">
-    <div class="web-bg-card">
-        asdf
-    </div>
+    @if (anime().isLoad) {
+        <ng-container>
+            <div class="web-bg-card ik-anime-world-anime-header-card">
+                <div class="ik-anime-world-anime-header-card__img">
+                    <picture>
+                        <img [src]="anime().item?.records![0].image" alt="">
+                    </picture>
+                    <web-button class="btn-red">
+                        <span #label>Finalizado</span>
+                    </web-button>
+                </div>
+                <div class="ik-anime-world-anime-header-card__info">
+                    <web-badge-anime-type 
+                        [props]="{
+                            color: anime().item?.records![0].type.color,
+                            text: anime().item?.records![0].type.name,
+                        }"
+                    ></web-badge-anime-type>
+                    <div class="ik-anime-world-anime-header-card__info-title">
+                        <h1>{{anime().item?.records![0].name}}</h1>
+                    </div>
+                    <p>{{anime().item?.records![0].description}}</p>
+                    <div class="ik-anime-world-anime-header-card__info__categories">
+                        @for (category of anime().item?.records![0].categories; track $index) {
+                            <web-badge-anime-category [text]="category.value | titlecase"></web-badge-anime-category>
+                        }
+                    </div>
+                    <div class="ik-anime-world-anime-header-card__buttons">
+                        <web-button class="btn-yellow">
+                            <span #label>Agregar a lista</span>
+                        </web-button>
+                        <web-button>
+                            <span #label>Seguir</span>
+                        </web-button>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    }
+    
+    
 </section>
