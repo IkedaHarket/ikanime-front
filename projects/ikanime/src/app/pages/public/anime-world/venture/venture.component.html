@@ -6,6 +6,7 @@
     <section class="ik-anime-world-venture__animes">
         @for (anime of animes().item?.records; track $index) {
             <web-anime-card
+            (click)="navigateToAnime(anime.uniqueName)"
             [props]="{
                 size: 'normal',
                 anime: {

@@ -12,7 +12,7 @@ export const routes: Routes = [
                 path:'venture',
                 loadComponent: () => import('./pages/public/anime-world/venture/venture.component').then( c => c.VentureComponent),
             },{
-                path:':id',
+                path:':name',
                 loadComponent: () => import('./pages/public/anime-world/anime/anime.component').then( c => c.AnimeComponent),
             }
         ],
